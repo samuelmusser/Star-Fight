@@ -4,3 +4,5 @@ Star Fight delivers singleplayer and multiplayer action to players like you! Tes
 
 That's dramatic haha. Here is a video of it functioning though!
 Demo link here: https://youtu.be/rVxI7yN4u_g
+
+Want to build it?! Email me for the hardware schematic 😄 
