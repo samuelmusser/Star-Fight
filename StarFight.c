@@ -1,6 +1,6 @@
 /*
 ===============================================================================
- Name        : ddlFinalProject.c
+ Name        : StarFight.c
  Author      : $(Sam Musser)
  Version     : 1.0
  Copyright   : $(copyright)
