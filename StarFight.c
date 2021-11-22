@@ -1,7 +1,7 @@
 /*
 ===============================================================================
  Name        : StarFight.c
- Author      : $(Sam Musser)
+ Author      : $(Giselle Chavez and Sam Musser)
  Version     : 1.0
  Copyright   : $(copyright)
  Description : The main objective of this project is to create a
