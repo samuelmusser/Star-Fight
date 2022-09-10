@@ -313,7 +313,8 @@ void GLCD_init()
     output[5] = 0b00001100; //display control set normal mode (D=1, E=1)
 
     //writes these initialization commands to glcd in command mode
-    for(int i = 0; i < 6; i++) {
+    for(int i = 0; i < 6; i++) 
+    {
         S0SPDR = output[i];
 
         //makes sure each byte passes through before moving on
@@ -339,9 +340,12 @@ void start(void)
 //read function for reading in data to the i2c
 int read(int heard)
 {
-    if(heard) {
+    if(heard) 
+    {
         I2C0CONSET = (1<<2); //accepts data
-    } else {
+    } 
+    else 
+    {
         I2C0CONCLR = (1<<2);
     }
     I2C0CONCLR = (1<<3);
@@ -388,7 +392,8 @@ void shiftDown() {}
 int moveUp(int arrayNum)
 {
     //makes sure cannot move past upper bounds
-    if (arrayNum > 83) {
+    if (arrayNum > 83) 
+    {
         arrayNum -= 84;
     }
 
@@ -399,7 +404,8 @@ int moveUp(int arrayNum)
 int moveDown(int arrayNum)
 {
     //makes sure cannot move past lower bounds
-    if (arrayNum < 419) {
+    if (arrayNum < 419) 
+    {
         arrayNum += 84;
     }
 
@@ -529,7 +535,8 @@ void reset()
 //displays outputs current values to the screen
 void updateScreen()
 {
-    for (int f = 0; f < 504; f++) {
+    for (int f = 0; f < 504; f++) 
+    {
         S0SPDR = output[f];
 
         while (((S0SPSR >> 7)&1) == 0) {}
@@ -539,7 +546,8 @@ void updateScreen()
 //sets all output values to that of what "would" be a blank screen
 void clrOutput()
 {
-    for (int m = 0; m < 504; m++) {
+    for (int m = 0; m < 504; m++) 
+    {
         output[m] = 0x00;
     }
 }
@@ -555,7 +563,8 @@ void clrScreen()
 //outputs the home screen to the display
 void displayHome()
 {
-    for (int hh = 0; hh < 504; hh++) {
+    for (int hh = 0; hh < 504; hh++) 
+    {
         S0SPDR = starFightBitMap[hh];
 
         while (((S0SPSR >> 7)&1) == 0) {}
@@ -574,7 +583,8 @@ void updateSingleGame()
     temp = 0;
 
     //sets the first tie fighter position in output
-    for (int e = tieFighter1[0]; e < (tieFighter1[0] + 10); e++) {
+    for (int e = tieFighter1[0]; e < (tieFighter1[0] + 10); e++) 
+    {
         output[e] = tie[temp];
         temp++;
     }
@@ -582,8 +592,10 @@ void updateSingleGame()
     temp = 0;
 
     //sets the new laser positions if they are on and updates them
-    if (laser1[3] == 1) {
-        for (int lr = laser1[0]; lr < laser1[0] + 3; lr++) {
+    if (laser1[3] == 1) 
+    {
+        for (int lr = laser1[0]; lr < laser1[0] + 3; lr++) 
+        {
             output[lr] = lzr[temp];
             temp++;
         }
@@ -594,8 +606,10 @@ void updateSingleGame()
     temp = 0;
 
     //sets the new laser positions if they are on and updates them
-    if (laser2[3] == 1) {
-        for (int y = laser2[0]; y < laser2[0] + 3; y++) {
+    if (laser2[3] == 1) 
+    {
+        for (int y = laser2[0]; y < laser2[0] + 3; y++) 
+        {
             output[y] = lzr[temp];
             temp++;
         }
@@ -606,8 +620,10 @@ void updateSingleGame()
     temp = 0;
 
         //sets the new laser positions if they are on and updates them
-        if (laser11[3] == 1) {
-            for (int b = laser11[0]; b < laser11[0] + 3; b++) {
+        if (laser11[3] == 1) 
+        {
+            for (int b = laser11[0]; b < laser11[0] + 3; b++) 
+            {
                 output[b] = lzr[temp];
                 temp++;
             }
@@ -618,8 +634,10 @@ void updateSingleGame()
         temp = 0;
 
         //sets the new laser positions if they are on and updates them
-        if (laser21[3] == 1) {
-            for (int q = laser21[0]; q < laser21[0] + 3; q++) {
+        if (laser21[3] == 1) 
+        {
+            for (int q = laser21[0]; q < laser21[0] + 3; q++) 
+            {
                 output[q] = lzr[temp];
                 temp++;
             }
@@ -646,7 +664,8 @@ void updateMultGame()
     temp = 0;
 
     //sets the first tie fighter position in output
-    for (int g = tieFighter1[0]; g < (tieFighter1[0] + 10); g++) {
+    for (int g = tieFighter1[0]; g < (tieFighter1[0] + 10); g++) 
+    {
         output[g] = tie[temp];
         temp++;
     }
@@ -654,7 +673,8 @@ void updateMultGame()
     temp = 0;
 
     //sets the second tie fighter position in output
-    for (int y = tieFighter2[0]; y < (tieFighter2[0] + 10); y++) {
+    for (int y = tieFighter2[0]; y < (tieFighter2[0] + 10); y++) 
+    {
         output[y] = tie[temp];
         temp++;
     }
@@ -662,8 +682,10 @@ void updateMultGame()
     temp = 0;
 
     //sets the new laser positions if they are on and updates them
-    if (laser1[3] == 1) {
-        for (int lr = laser1[0]; lr < laser1[0] + 3; lr++) {
+    if (laser1[3] == 1) 
+    {
+        for (int lr = laser1[0]; lr < laser1[0] + 3; lr++) 
+        {
             output[lr] = lzr[temp];
             temp++;
         }
@@ -674,8 +696,10 @@ void updateMultGame()
     temp = 0;
 
     //sets the new laser positions if they are on and updates them
-    if (laser2[3] == 1) {
-        for (int le = laser2[0]; le < laser2[0] + 3; le++) {
+    if (laser2[3] == 1) 
+    {
+        for (int le = laser2[0]; le < laser2[0] + 3; le++) 
+        {
             output[le] = lzr[temp];
             temp++;
         }
@@ -684,8 +708,10 @@ void updateMultGame()
     }
 
     //sets the new laser positions if they are on and updates them
-        if (laser11[3] == 1) {
-            for (int lr = laser11[0]; lr < laser11[0] + 3; lr++) {
+        if (laser11[3] == 1) 
+        {
+            for (int lr = laser11[0]; lr < laser11[0] + 3; lr++) 
+            {
                 output[lr] = lzr[temp];
                 temp++;
             }
@@ -696,8 +722,10 @@ void updateMultGame()
         temp = 0;
 
         //sets the new laser positions if they are on and updates them
-        if (laser21[3] == 1) {
-            for (int le = laser21[0]; le < laser21[0] + 3; le++) {
+        if (laser21[3] == 1) 
+        {
+            for (int le = laser21[0]; le < laser21[0] + 3; le++) 
+            {
                 output[le] = lzr[temp];
                 temp++;
             }
@@ -738,7 +766,8 @@ void playTheme()
          if ((note == 4) || (note == 7) || (note == 13) || (note ==16) ||
                  (note == 3) || (note == 6) || (note == 12) || (note ==15))
          {
-             while ((T0TC-start)< 200000) {
+             while ((T0TC-start)< 200000) 
+             {
                          FIO2PIN |= (1<<0);
                          tick(imperialTune[note]);
                          FIO2PIN &= ~(1<<0);
@@ -746,8 +775,10 @@ void playTheme()
                          }
                       wait(0.05);
          }
-         else{
-         while ((T0TC-start)< 400000) {
+         else
+         {
+         while ((T0TC-start)< 400000) 
+         {
             FIO2PIN |= (1<<0);
             tick(imperialTune[note]);
             FIO2PIN &= ~(1<<0);
